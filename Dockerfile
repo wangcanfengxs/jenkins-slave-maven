@@ -1,6 +1,6 @@
 FROM jenkinsci/jnlp-slave
 
-#install maven
+# install maven
 
 ENV JENKINS_HOME=/home/jenkins
 ENV MAVEN_HOME=$JENKINS_HOME/mvn
