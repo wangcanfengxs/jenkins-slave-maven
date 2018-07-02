@@ -2,17 +2,19 @@ FROM jenkinsci/jnlp-slave
 
 #install maven
 
-ENV JENKINS_HOME=/home/jenkins
-ENV MAVEN_HOME=$JENKINS_HOME/mvn
-# ENV MAVEN_VERSION=3.3.9
+USER root
 
-# RUN wget http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
-# && tar -zvxf apache-maven-${MAVEN_VERSION}-bin.tar.gz -C $JENKINS_HOME \
-# && ln -s $JENKINS_HOME/apache-maven-${MAVEN_VERSION} $MAVEN_HOME
+ARG JENKINS_HOME=/home/jenkins
+ARG MAVEN_VERSION=3.3.9
 
-COPY ./apache-maven-3.5.4 $MAVEN_HOME
+# install maven
 
-ENV PATH=$MAVEN_HOME/bin:$PATH
+RUN wget http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    tar -zxf apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    mv apache-maven-${MAVEN_VERSION} /usr/local && \
+    rm -f apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    ln -s /usr/local/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn && \
+    ln -s /usr/local/apache-maven-${MAVEN_VERSION} /usr/local/maven
 
 USER jenkins
 
