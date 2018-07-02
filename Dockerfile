@@ -16,13 +16,13 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/
     ln -s /usr/local/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn && \
     ln -s /usr/local/apache-maven-${MAVEN_VERSION} /usr/local/maven
     
-ADD ./setting.xml /usr/local/maven/conf
+ADD ./settings.xml /usr/local/maven/conf
 
 USER jenkins
 
 WORKDIR $JENKINS_HOME
 
-ADD ./setting.xml ~/
+ADD ./settings.xml ~/
 
 ENTRYPOINT ["/usr/local/bin/jenkins-slave"]
 
