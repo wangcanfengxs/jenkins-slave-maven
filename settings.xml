@@ -7,8 +7,8 @@
     <mirrors>
         <mirror>
             <id>maven-mirror</id>
-            <url>${env.MAVEN_MIRROR}</url>
-            <mirrorOf>${env.MAVEN_MIRROR_OF}</mirrorOf>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>
 </settings>

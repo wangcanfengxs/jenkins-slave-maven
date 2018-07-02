@@ -22,7 +22,7 @@ USER jenkins
 
 WORKDIR $JENKINS_HOME
 
-ADD ./settings.xml ~/
+ADD ./settings.xml $JENKINS_HOME
 
 ENTRYPOINT ["/usr/local/bin/jenkins-slave"]
 
