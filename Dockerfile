@@ -12,7 +12,7 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/
 
 ENV PATH=$MAVEN_HOME/bin:$PATH
 
-# USER jenkins
+USER jenkins
 
 WORKDIR $JENKINS_HOME
 
