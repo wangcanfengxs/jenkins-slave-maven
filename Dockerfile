@@ -16,7 +16,7 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/
     ln -s /usr/local/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn && \
     ln -s /usr/local/apache-maven-${MAVEN_VERSION} /usr/local/maven
     
-
+ADD ./settings.xml /usr/local/maven/conf
 
 USER jenkins
 
